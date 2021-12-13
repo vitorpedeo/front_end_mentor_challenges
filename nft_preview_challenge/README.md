@@ -27,8 +27,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://www.frontendmentor.io/solutions/nft-preview-challenge-solution-OqORoyRCoI](https://www.frontendmentor.io/solutions/nft-preview-challenge-solution-OqORoyRCoI)
+- Live Site URL: [https://github.com/vitorpedeo/front_end_mentor_challenges/tree/main/nft_preview_challenge](https://github.com/vitorpedeo/front_end_mentor_challenges/tree/main/nft_preview_challenge)
 
 ## My process
 
