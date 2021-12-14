@@ -1,0 +1,154 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body, button {
+  font-family: 'Red Hat Display', sans-serif;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+  background: url('../images/pattern-background-mobile.svg') no-repeat
+   center center, linear-gradient(hsl(224, 100%, 92%), hsl(225, 100%, 94%));
+  background-size: cover;
+  position: relative;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .card {
+    width: 90%;
+    border-radius: 16px;
+    background: hsl(0, 100%, 100%);
+    box-shadow: 0 0 8px hsla(224, 23%, 55%, 0.2);
+    overflow-x: hidden;
+
+    .card-img {
+      width: 100%;
+      
+      img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+      }
+    }
+
+    .card-body {
+      padding: 1.5rem;
+      text-align: center;
+
+      display: grid;
+      grid-gap: 1.5rem;
+
+      .card-title {
+        color: hsl(223, 47%, 23%);
+        font-size: 1.5rem;
+        font-weight: 900;
+      }
+
+      .card-description {
+        color: hsl(224, 23%, 55%);
+        font-weight: 500;
+        line-height: 26px;
+      }
+
+      .plan-info {
+        padding: 1rem 0.875rem;
+        width: 100%;
+        border-radius: 16px;
+        background: hsl(225, 100%, 98%);
+
+        display: flex;
+        align-items: center;
+
+        > img {
+          margin-right: 1rem;
+        }
+
+        .plan-type-price {
+          font-size: 0.875rem;
+
+          > p {
+            color: hsl(223, 47%, 23%);
+            font-weight: 900;
+          }
+
+          > span {
+            color: hsl(224, 23%, 55%);
+            font-weight: 500;
+          }
+        }
+
+        .change-plan {
+          margin-left: auto;
+          color: hsl(245, 75%, 52%);
+          font-size: 0.875rem;
+          transition: all 0.2s;
+
+          &:hover {
+            text-decoration: none;
+            opacity: 0.8;
+          }
+        }
+      }
+
+      .proceed-payment-btn, 
+      .cancel-order-btn {
+        padding: 0.875rem 0;
+        border: 0;
+        font-size: 0.875rem;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .proceed-payment-btn {
+        border-radius: 10px;
+        background: hsl(245, 75%, 52%);
+        color: hsl(0, 100%, 100%);
+        box-shadow: 0 16px 16px hsla(245, 75%, 52%, 0.25);
+        transition: opacity 0.2s;
+
+        &:hover {
+          opacity: 0.8;
+        }
+      }
+
+      .cancel-order-btn {
+        background: transparent;
+        color: hsl(224, 23%, 55%);
+        transition: color 0.2s;
+
+        &:hover {
+          color: hsl(223, 47%, 23%);
+        }
+      }
+    }
+  }
+  
+  .attribution { 
+    position: absolute;
+    bottom: 0;
+    font-size: 11px; 
+    text-align: center; 
+  
+    a {
+      color: hsl(228, 45%, 44%);
+    }
+  }
+}
+
+@media screen and (min-width: 375px) {
+  .wrapper {
+    background: url('../images/pattern-background-desktop.svg') no-repeat
+    center center, linear-gradient(hsl(224, 100%, 92%), hsl(225, 100%, 94%));
+    background-size: cover;
+
+    .card {
+      width: 360px;
+    }
+  }
+}
