@@ -1,0 +1,399 @@
+* {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+body[data-theme="light"] {
+  --todos-section-bg-color: hsl(0, 0%, 98%);
+  --todo-section-desktop-bg-image: url('../images/bg-desktop-light.jpg');
+  --todo-section-mobile-bg-image: url('../images/bg-mobile-light.jpg');
+  --input-wrapper-bg-color: #fff;
+  --input-text-color: hsl(235, 19%, 35%);
+  --todos-info-bg-color: #fff;
+  --todo-label-color: hsl(235, 19%, 35%);
+  --checked-todo-label-color: hsl(233, 11%, 84%);
+  --todo-border-bottom-color: hsl(233, 11%, 84%);
+  --attribution-text-color: hsl(235, 24%, 19%);
+}
+
+body[data-theme="dark"] {
+  --todos-section-bg-color: hsl(235, 21%, 11%);
+  --todo-section-desktop-bg-image: url('../images/bg-desktop-dark.jpg');
+  --todo-section-mobile-bg-image: url('../images/bg-mobile-dark.jpg');
+  --input-wrapper-bg-color: hsl(235, 24%, 19%);
+  --input-text-color: #fff;
+  --todos-info-bg-color: hsl(235, 24%, 19%);
+  --todo-label-color: #fff;
+  --checked-todo-label-color: hsl(234, 11%, 52%);
+  --todo-border-bottom-color: hsl(234, 11%, 52%);
+  --attribution-text-color: hsl(234, 11%, 52%);
+}
+
+body, button, input {
+  font-family: 'Josefin Sans', sans-serif;
+}
+
+.wrapper {
+  width: 100%;
+  height: 100vh;
+}
+
+.wrapper .container {
+  margin: 0 auto;
+  padding: 0 2rem;
+  max-width: 540px;
+  width: 100%;
+}
+
+.wrapper .todo-section {
+  padding: 2rem 0;
+  width: 100%;
+  height: 35vh;
+  background: var(--todo-section-mobile-bg-image) no-repeat center center;
+  background-size: cover;
+}
+
+.wrapper .todo-section .container {
+  height: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wrapper .todo-section .container .title-theme-toggle {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.wrapper .todo-section .container .title-theme-toggle > h1 {
+  color: #fff;
+  font-size: 2.5rem;
+  font-weight: 700;
+  letter-spacing: 8px;
+  text-transform: uppercase;
+}
+
+.wrapper .todo-section .container .title-theme-toggle .theme-toggler {
+  padding: 0.2rem 0.25rem;
+  border: none;
+  border-radius: 0.25rem;
+  background: none;
+  cursor: pointer;
+  -webkit-transition: -webkit-box-shadow 0.2s;
+  transition: -webkit-box-shadow 0.2s;
+  transition: box-shadow 0.2s;
+  transition: box-shadow 0.2s, -webkit-box-shadow 0.2s;
+}
+
+.wrapper .todo-section .container .title-theme-toggle .theme-toggler:focus {
+  -webkit-box-shadow: 0 0 0 2px #f8fafc, 0 0 0 4px #c058f3, 0 1px 2px 0 black;
+          box-shadow: 0 0 0 2px #f8fafc, 0 0 0 4px #c058f3, 0 1px 2px 0 black;
+}
+
+.wrapper .todo-section .container .input-wrapper {
+  margin-top: 3rem;
+  width: 100%;
+  height: 60px;
+  border-radius: 0.25rem;
+  background: var(--input-wrapper-bg-color);
+  overflow: hidden;
+  -webkit-transition: background 0.2s;
+  transition: background 0.2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper .todo-section .container .input-wrapper .radio {
+  margin: 0 1.5rem;
+  width: 28px;
+  height: 24px;
+  border: 1px solid #e4e5f1;
+  border-radius: 50%;
+}
+
+.wrapper .todo-section .container .input-wrapper input {
+  padding: 0 0.75rem;
+  width: 100%;
+  height: 100%;
+  border: none;
+  outline: none;
+  background: transparent;
+  color: var(--input-text-color);
+  font-size: 1.125rem;
+  -webkit-transition: border 0.2s;
+  transition: border 0.2s;
+}
+
+.wrapper .todos-section {
+  width: 100%;
+  height: 65vh;
+  background: var(--todos-section-bg-color);
+  -webkit-transition: background 0.2s;
+  transition: background 0.2s;
+}
+
+.wrapper .todos-section .todos-info {
+  width: 100%;
+  border-radius: 0.5rem;
+  background: var(--todos-info-bg-color);
+  -webkit-box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);
+          box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  bottom: 3rem;
+  -webkit-transition: background 0.2s;
+  transition: background 0.2s;
+  display: none;
+}
+
+.wrapper .todos-section .todos-info .todos-list {
+  width: 100%;
+  max-height: 240px;
+  overflow-y: auto;
+  list-style: none;
+}
+
+.wrapper .todos-section .todos-info .todos-list .todo-item {
+  padding-left: 4.5rem;
+  width: 100%;
+  height: 60px;
+  border-bottom: 1px solid var(--todo-border-bottom-color);
+  position: relative;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper .todos-section .todos-info .todos-list .todo-item > label {
+  padding: 0 0.75rem;
+  width: 100%;
+  height: 100%;
+  color: var(--todo-label-color);
+  font-size: 1.125rem;
+  font-weight: 400;
+  cursor: pointer;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.wrapper .todos-section .todos-info .todos-list .todo-item > label input[type="checkbox"] {
+  width: 0;
+  height: 0;
+  opacity: 0;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+}
+
+.wrapper .todos-section .todos-info .todos-list .todo-item > label input[type="checkbox"]:checked ~ .check {
+  background: -webkit-gradient(linear, left top, left bottom, from(#57ddff), to(#c058f3));
+  background: linear-gradient(#57ddff, #c058f3);
+}
+
+.wrapper .todos-section .todos-info .todos-list .todo-item > label input[type="checkbox"]:checked ~ .check:after {
+  width: 5px;
+  height: 10px;
+  left: 8px;
+  top: 4px;
+  border: 1px solid white;
+  border-width: 0 3px 3px 0;
+  -webkit-transform: rotate(45deg);
+          transform: rotate(45deg);
+  display: block;
+}
+
+.wrapper .todos-section .todos-info .todos-list .todo-item > label .check {
+  height: 25px;
+  width: 25px;
+  border: 1px solid #e4e5f1;
+  border-radius: 50%;
+  position: absolute;
+  top: 16px;
+  left: 24px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+}
+
+.wrapper .todos-section .todos-info .todos-list .todo-item > label .check:after {
+  content: "";
+  position: absolute;
+  display: none;
+}
+
+.wrapper .todos-section .todos-info .todos-list .todo-item > label:hover .check {
+  border-color: #c058f3;
+}
+
+.wrapper .todos-section .todos-info .todos-list .todo-item > label.checked-todo {
+  color: var(--checked-todo-label-color);
+  text-decoration: line-through;
+}
+
+.wrapper .todos-section .todos-info .todos-list .todo-item > button {
+  margin: 0 2rem;
+  border: none;
+  outline: none;
+  background: transparent;
+  cursor: pointer;
+}
+
+.wrapper .todos-section .todos-info .todos-modifiers {
+  padding: 0 1.5rem;
+  width: 100%;
+  height: 50px;
+  font-size: 0.875rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.wrapper .todos-section .todos-info .todos-modifiers .todos-count {
+  color: #9394a5;
+  font-weight: 400;
+}
+
+.wrapper .todos-section .todos-info .todos-modifiers .filters {
+  display: none;
+}
+
+.wrapper .todos-section .todos-info .todos-modifiers .clear-todos {
+  border: none;
+  background: none;
+  color: #9394a5;
+  font-weight: 400;
+  cursor: pointer;
+  -webkit-transition: color 0.2s;
+  transition: color 0.2s;
+}
+
+.wrapper .todos-section .todos-info .todos-modifiers .clear-todos:hover {
+  color: #484b6a;
+}
+
+.wrapper .todos-section .mobile-filters {
+  margin: 1rem 0 2rem 0;
+  height: 60px;
+  border-radius: 0.5rem;
+  background: var(--todos-info-bg-color);
+  -webkit-transition: background 0.2s;
+  transition: background 0.2s;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  gap: 0.5rem;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
+
+.wrapper .todos-section .mobile-filters > button {
+  border: none;
+  background: none;
+  color: #9394a5;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.wrapper .todos-section .mobile-filters > button.active {
+  color: #3a7bfd;
+  pointer-events: none;
+  cursor: default;
+}
+
+.wrapper .todos-section .drag-tip {
+  font-size: 0.875rem;
+  color: #9394a5;
+  text-align: center;
+  display: none;
+}
+
+.wrapper .attribution {
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+  color: var(--attribution-text-color);
+  font-size: 11px;
+  text-align: center;
+}
+
+.wrapper .attribution a {
+  color: #3e52a3;
+}
+
+@media screen and (min-width: 640px) {
+  .wrapper .todo-section {
+    background: var(--todo-section-desktop-bg-image) no-repeat center center;
+    background-size: cover;
+  }
+  .wrapper .todos-section .mobile-filters {
+    display: none;
+  }
+  .wrapper .todos-section .todos-info .todos-modifiers .filters {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    gap: 0.5rem;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .wrapper .todos-section .todos-info .todos-modifiers .filters > button {
+    border: none;
+    background: none;
+    color: #9394a5;
+    font-weight: 700;
+    -webkit-transition: color 0.2s;
+    transition: color 0.2s;
+    cursor: pointer;
+  }
+  .wrapper .todos-section .todos-info .todos-modifiers .filters > button.active {
+    color: #3a7bfd;
+    pointer-events: none;
+    cursor: default;
+  }
+  .wrapper .todos-section .todos-info .todos-modifiers .filters > button:not(.active):hover {
+    color: #484b6a;
+  }
+}
+/*# sourceMappingURL=styles.css.map */
