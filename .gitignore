@@ -17,3 +17,6 @@
 
 design
 style-guide.md
+node_modules
+.next
+.env.local
